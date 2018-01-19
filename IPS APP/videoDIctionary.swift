@@ -9,5 +9,7 @@
 import Foundation
 
 struct videoDictionary {
-    var label: String
+    var key: int
+    var title: String
+  
 }

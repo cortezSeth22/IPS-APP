@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 // Outlets and vars
     @IBOutlet weak var myTable: UITableView!
    
-    var list = [String] ()
+    var list:[String] = []
     var timer: Timer?
     var startTime: Double = 0
     var time: Double = 0
@@ -23,9 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
 //        resetButton.isEnabled = false
         // Do any additional setup after loading the view, typically from a nib.
-        
-        list = ["apple","banana","cool"]
-        
+       list = ["videoOne"]
     }
 
     

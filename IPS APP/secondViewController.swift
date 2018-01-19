@@ -122,14 +122,16 @@ class secondViewController: UIViewController {
     
     @objc func playVideoFile() {
             
-            if let path = Bundle.main.path(forResource: "videoOne.MOV", ofType: nil){
+            if let path = Bundle.main.path(forResource: "\(activity)", ofType: nil){
                 let url = URL(fileURLWithPath: path)
                 let avPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
                 let avPlayerLayer = AVPlayerLayer(player: avPlayer)
                 avPlayerLayer.frame = videoView.bounds
                 videoView.layer.insertSublayer(avPlayerLayer, at: 0)
                 avPlayer.play()
-//                playButton.isHidden = true
+
+                  playButton.isHidden = true
+                
             } else {
                 print("Video file is not found")
         }
