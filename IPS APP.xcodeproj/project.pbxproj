@@ -15,6 +15,12 @@
 		6164B0CB1FFD27260040000B /* videoDIctionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6164B0CA1FFD27260040000B /* videoDIctionary.swift */; };
 		61D0E73A2007BD1700BC082C /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D0E7392007BD1700BC082C /* secondViewController.swift */; };
 		61F82ED5200E4F0D00386EA5 /* videoOne.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 61F82ED4200E4F0800386EA5 /* videoOne.MOV */; };
+		8304D3062016327300AAE78B /* videoTwo.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8304D3002016326F00AAE78B /* videoTwo.MOV */; };
+		8304D3072016327300AAE78B /* videoSeven.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8304D3012016327000AAE78B /* videoSeven.MOV */; };
+		8304D3082016327300AAE78B /* videoFour.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8304D3022016327000AAE78B /* videoFour.MOV */; };
+		8304D3092016327300AAE78B /* videoSix.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8304D3032016327100AAE78B /* videoSix.MOV */; };
+		8304D30A2016327300AAE78B /* videoThree.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8304D3042016327200AAE78B /* videoThree.MOV */; };
+		8304D30B2016327300AAE78B /* videoFive.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8304D3052016327200AAE78B /* videoFive.MOV */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		6164B0CA1FFD27260040000B /* videoDIctionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videoDIctionary.swift; sourceTree = "<group>"; };
 		61D0E7392007BD1700BC082C /* secondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 		61F82ED4200E4F0800386EA5 /* videoOne.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = videoOne.MOV; sourceTree = "<group>"; };
+		8304D3002016326F00AAE78B /* videoTwo.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = videoTwo.MOV; sourceTree = "<group>"; };
+		8304D3012016327000AAE78B /* videoSeven.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = videoSeven.MOV; sourceTree = "<group>"; };
+		8304D3022016327000AAE78B /* videoFour.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = videoFour.MOV; sourceTree = "<group>"; };
+		8304D3032016327100AAE78B /* videoSix.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = videoSix.MOV; sourceTree = "<group>"; };
+		8304D3042016327200AAE78B /* videoThree.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = videoThree.MOV; sourceTree = "<group>"; };
+		8304D3052016327200AAE78B /* videoFive.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = videoFive.MOV; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +77,12 @@
 				6164B0CA1FFD27260040000B /* videoDIctionary.swift */,
 				61D0E7392007BD1700BC082C /* secondViewController.swift */,
 				61F82ED4200E4F0800386EA5 /* videoOne.MOV */,
+				8304D3002016326F00AAE78B /* videoTwo.MOV */,
+				8304D3042016327200AAE78B /* videoThree.MOV */,
+				8304D3022016327000AAE78B /* videoFour.MOV */,
+				8304D3052016327200AAE78B /* videoFive.MOV */,
+				8304D3032016327100AAE78B /* videoSix.MOV */,
+				8304D3012016327000AAE78B /* videoSeven.MOV */,
 				6164B0BC1FFD216E0040000B /* Main.storyboard */,
 				6164B0BF1FFD216E0040000B /* Assets.xcassets */,
 				6164B0C11FFD216E0040000B /* LaunchScreen.storyboard */,
@@ -132,9 +150,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8304D3082016327300AAE78B /* videoFour.MOV in Resources */,
+				8304D30A2016327300AAE78B /* videoThree.MOV in Resources */,
+				8304D30B2016327300AAE78B /* videoFive.MOV in Resources */,
+				8304D3092016327300AAE78B /* videoSix.MOV in Resources */,
 				61F82ED5200E4F0D00386EA5 /* videoOne.MOV in Resources */,
 				6164B0C31FFD216E0040000B /* LaunchScreen.storyboard in Resources */,
+				8304D3062016327300AAE78B /* videoTwo.MOV in Resources */,
 				6164B0C01FFD216E0040000B /* Assets.xcassets in Resources */,
+				8304D3072016327300AAE78B /* videoSeven.MOV in Resources */,
 				6164B0BE1FFD216E0040000B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,6 +36,7 @@ class secondViewController: UIViewController {
     }()
     var audioPlayer:AVAudioPlayer = AVAudioPlayer()
    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         videoView.addSubview(playButton)
@@ -53,8 +54,8 @@ class secondViewController: UIViewController {
             
             videoView.image = getThumbnailFrom(path: url)
         }
-        
-    }
+      
+            }
 //buttons
     
     @IBAction func startStop(_ sender: Any) {
@@ -122,20 +123,34 @@ class secondViewController: UIViewController {
     
     @objc func playVideoFile() {
             
-            if let path = Bundle.main.path(forResource: "\(activity)", ofType: nil){
+            if let path = Bundle.main.path(forResource: "\(activity).MOV", ofType: nil){
                 let url = URL(fileURLWithPath: path)
                 let avPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
                 let avPlayerLayer = AVPlayerLayer(player: avPlayer)
                 avPlayerLayer.frame = videoView.bounds
                 videoView.layer.insertSublayer(avPlayerLayer, at: 0)
-                avPlayer.play()
-
-                  playButton.isHidden = true
+               
+                NotificationCenter.default.addObserver(self, selector: #selector(playerFinishedPlayingVideo), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem)
+            avPlayer.play()
+            playButton.isHidden = true
                 
             } else {
                 print("Video file is not found")
         }
     }
+    
+    
+    @objc func playerFinishedPlayingVideo() {
+        let path = Bundle.main.path(forResource: "\(activity).MOV", ofType: nil)
+        let url = URL(fileURLWithPath: path!)
+        let avPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
+        playButton.isHidden = false
+        avPlayer.pause()
+        avPlayer.seek(to: kCMTimeZero)
+        NotificationCenter.default.removeObserver(self)
+    
+    }
+     
     
     func getThumbnailFrom(path: URL) -> UIImage? {
         

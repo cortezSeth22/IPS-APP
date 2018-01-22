@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
 //        resetButton.isEnabled = false
         // Do any additional setup after loading the view, typically from a nib.
-       list = ["videoOne"]
+       list = ["videoOne","videoTwo","videoThree","videoFour","vieoFive","videoSix","videoSeven"]
     }
 
     
