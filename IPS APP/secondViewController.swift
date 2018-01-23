@@ -11,6 +11,10 @@ import AVFoundation
 
 class secondViewController: UIViewController {
 // var and outlets
+    fileprivate var player: AVPlayer? {
+        didSet { player?.play() }
+    }
+    fileprivate var playerObserver: Any?
     var activity = ""
     var timer: Timer?
     var startTime: Double = 0
@@ -23,7 +27,12 @@ class secondViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var videoView: UIImageView!
- 
+   
+    @IBOutlet weak var countdownTimer: UILabel!
+    deinit {
+        guard let observer = playerObserver else { return }
+        NotificationCenter.default.removeObserver(observer)
+    }
     lazy var playButton: UIButton = {
         let button = UIButton(type: UIButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +44,7 @@ class secondViewController: UIViewController {
         return button
     }()
     var audioPlayer:AVAudioPlayer = AVAudioPlayer()
-   
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +58,17 @@ class secondViewController: UIViewController {
         resetButton.isEnabled = false
 
         
-        if let path = Bundle.main.path(forResource: "videoOne.MOV", ofType: nil){
+        if let path = Bundle.main.path(forResource: "\(activity).MOV", ofType: nil){
             let url = URL(fileURLWithPath: path)
             
             videoView.image = getThumbnailFrom(path: url)
         }
       
             }
+    override func viewDidDisappear(_ animated: Bool) {
+        player?.pause()
+    }
+    
 //buttons
     
     @IBAction func startStop(_ sender: Any) {
@@ -121,36 +134,46 @@ class secondViewController: UIViewController {
                 present(alert, animated: true, completion: nil)
             }
     
-    @objc func playVideoFile() {
+    @objc func playVideoFile() -> AVPlayerLayer {
             
-            if let path = Bundle.main.path(forResource: "\(activity).MOV", ofType: nil){
-                let url = URL(fileURLWithPath: path)
-                let avPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
-                let avPlayerLayer = AVPlayerLayer(player: avPlayer)
-                avPlayerLayer.frame = videoView.bounds
-                videoView.layer.insertSublayer(avPlayerLayer, at: 0)
-               
-                NotificationCenter.default.addObserver(self, selector: #selector(playerFinishedPlayingVideo), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem)
-            avPlayer.play()
-            playButton.isHidden = true
-                
-            } else {
-                print("Video file is not found")
+                let path = Bundle.main.path(forResource: "\(activity).MOV", ofType: nil)
+                let url = URL(fileURLWithPath: path!)
+                let player = AVPlayer(playerItem: AVPlayerItem(url: url))
+                let playerLayer = AVPlayerLayer(player: player)
+                playerLayer.frame = videoView.bounds
+                videoView.layer.insertSublayer(playerLayer, at: 0)
+                player.play()
+                playButton.isHidden = true
+                let resetPlayer = {
+                    player.pause()
+                    player.seek(to: kCMTimeZero)
+                self.videoView.layer.sublayers?.remove(at: 0)
+                self.playButton.isHidden = false
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                        player.play()
+//                    self.countdownTimer.isHidden = true
+//                    }
+//                    self.countdownTimer.isHidden = false
+//                    self.countdownTimer.text = String(3)
+//
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                        self.countdownTimer.text = String(2)
+//                    }
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                        self.countdownTimer.text = String(1)
+//
+//                    }
+                    
+                    
         }
-    }
+                playerObserver = NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: nil) { notification in resetPlayer()}
+                self.player = player
+                return AVPlayerLayer(player: player)
+            }
     
     
-    @objc func playerFinishedPlayingVideo() {
-        let path = Bundle.main.path(forResource: "\(activity).MOV", ofType: nil)
-        let url = URL(fileURLWithPath: path!)
-        let avPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
-        playButton.isHidden = false
-        avPlayer.pause()
-        avPlayer.seek(to: kCMTimeZero)
-        NotificationCenter.default.removeObserver(self)
     
-    }
-     
+
     
     func getThumbnailFrom(path: URL) -> UIImage? {
         
